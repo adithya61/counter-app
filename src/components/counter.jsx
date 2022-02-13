@@ -4,23 +4,29 @@ import "bootstrap/dist/css/bootstrap.min.css";
 class Counter extends Component {
   // state: stores important values of the component.
   state = {
-    count: 0,
+    count: this.props.value,
     tags: ["tag1", "tag2", "tag3"],
   };
 
-  // Event Handler: use arrow function for handling event handlers as it inherits context from parent
-  // and hence count variable is accessible.
+  /* Event Handler: use arrow function for handling event handlers as it inherits context from parent
+   and hence count variable is accessible. */
   handleIncrement = () => {
     this.setState({ count: this.state.count + 1 });
   };
 
   render() {
+    // every component has a prop property that contains the attributes set on the component
+    console.log("props ", this.props);
+
     return (
       <div>
         {/* dynamically rendering className */}
         <span className={this.getBadgeColor()}>{this.formatCount()}</span>
 
-        <button onClick={this.handleIncrement} className="btn btn-secondary">
+        <button
+          onClick={this.handleIncrement}
+          className="btn btn-secondary btn-sm"
+        >
           Increment
         </button>
       </div>
